@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   ShoppingCart, X, Plus, Minus, Star, Clock, MapPin, Phone, 
   ChevronDown, CreditCard, Check, Search, Menu,
-  Truck, Gift, Percent, ArrowRight, User, Heart
+  Truck, Gift, Percent, ArrowRight, Heart
 } from 'lucide-react';
 
+interface MenuItem {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  image: string;
+  description: string;
+  popular?: boolean;
+  weight: string;
+  pieces?: number;
+}
+
+interface CartItem extends MenuItem {
+  quantity: number;
+}
+
 const MangaSushiSite = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('rolls');
   const [searchQuery, setSearchQuery] = useState('');
@@ -45,7 +61,7 @@ const MangaSushiSite = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const addToCart = (item) => {
+  const addToCart = (item: MenuItem) => {
     setCartItems(prev => {
       const existing = prev.find(i => i.id === item.id);
       if (existing) {
@@ -55,7 +71,7 @@ const MangaSushiSite = () => {
     });
   };
 
-  const updateQuantity = (id, delta) => {
+  const updateQuantity = (id: number, delta: number) => {
     setCartItems(prev => {
       return prev.map(item => {
         if (item.id === id) {
@@ -63,7 +79,7 @@ const MangaSushiSite = () => {
           return newQty > 0 ? {...item, quantity: newQty} : null;
         }
         return item;
-      }).filter(Boolean);
+      }).filter((item): item is CartItem => item !== null);
     });
   };
 
@@ -91,7 +107,7 @@ const MangaSushiSite = () => {
       { id: 3, last4: '5555', brand: 'visa', exp: '08/24' }
     ];
 
-    const formatCardNumber = (value) => {
+    const formatCardNumber = (value: string) => {
       const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
       const matches = v.match(/\d{4,16}/g);
       const match = (matches && matches[0]) || '';
@@ -102,7 +118,7 @@ const MangaSushiSite = () => {
       return parts.length ? parts.join(' ') : value;
     };
 
-    const formatExpiryDate = (value) => {
+    const formatExpiryDate = (value: string) => {
       const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
       if (v.length >= 2) {
         return v.slice(0, 2) + (v.length > 2 ? '/' + v.slice(2, 4) : '');
@@ -193,7 +209,7 @@ const MangaSushiSite = () => {
                     placeholder="Номер карты"
                     value={cardNumber}
                     onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
-                    maxLength="19"
+                    maxLength={19}
                     className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-red-500"
                     onClick={(e) => e.stopPropagation()}
                   />
@@ -203,7 +219,7 @@ const MangaSushiSite = () => {
                       placeholder="ММ/ГГ"
                       value={expiryDate}
                       onChange={(e) => setExpiryDate(formatExpiryDate(e.target.value))}
-                      maxLength="5"
+                      maxLength={5}
                       className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-red-500"
                       onClick={(e) => e.stopPropagation()}
                     />
@@ -212,7 +228,7 @@ const MangaSushiSite = () => {
                       placeholder="CVV"
                       value={cvv}
                       onChange={(e) => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                      maxLength="4"
+                      maxLength={4}
                       className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-red-500"
                       onClick={(e) => e.stopPropagation()}
                     />
