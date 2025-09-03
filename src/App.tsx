@@ -302,9 +302,9 @@ const MangaSushiSite = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-black/90 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-800">
+      <header className="bg-white/90 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-8">
@@ -313,29 +313,29 @@ const MangaSushiSite = () => {
                   <span className="text-white text-xl font-bold">M</span>
                 </div>
                 <div>
-                  <h1 className="text-white font-bold text-lg">MANGA SUSHI</h1>
-                  <p className="text-gray-400 text-xs">Доставка суши в Алматы</p>
+                  <h1 className="text-gray-900 font-bold text-lg">MANGA SUSHI</h1>
+                  <p className="text-gray-600 text-xs">Доставка суши в Алматы</p>
                 </div>
               </div>
               <nav className="hidden lg:flex space-x-6">
-                <button className="text-gray-300 hover:text-white transition-colors text-sm">Меню</button>
-                <button className="text-gray-300 hover:text-white transition-colors text-sm">Акции</button>
-                <button className="text-gray-300 hover:text-white transition-colors text-sm">О нас</button>
-                <button className="text-gray-300 hover:text-white transition-colors text-sm">Доставка</button>
-                <button className="text-gray-300 hover:text-white transition-colors text-sm">Контакты</button>
+                <button className="text-gray-700 hover:text-gray-900 transition-colors text-sm">Меню</button>
+                <button className="text-gray-700 hover:text-gray-900 transition-colors text-sm">Акции</button>
+                <button className="text-gray-700 hover:text-gray-900 transition-colors text-sm">О нас</button>
+                <button className="text-gray-700 hover:text-gray-900 transition-colors text-sm">Доставка</button>
+                <button className="text-gray-700 hover:text-gray-900 transition-colors text-sm">Контакты</button>
               </nav>
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex flex-col text-right">
-                <a href="tel:+77271234567" className="text-white font-semibold text-lg hover:text-red-500 transition-colors">+7 (727) 123-45-67</a>
-                <span className="text-gray-400 text-xs">Ежедневно с 10:00 до 23:00</span>
+                <a href="tel:+77271234567" className="text-gray-900 font-semibold text-lg hover:text-red-500 transition-colors">+7 (727) 123-45-67</a>
+                <span className="text-gray-600 text-xs">Ежедневно с 10:00 до 23:00</span>
               </div>
               <button
                 onClick={() => setShowCart(true)}
                 className="relative bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg transition-all transform hover:scale-105 flex items-center space-x-2"
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="hidden md:inline font-medium">₸{getTotalPrice().toLocaleString()}</span>
+                <span className="hidden md:inline font-medium text-white">₸{getTotalPrice().toLocaleString()}</span>
                 {getTotalItems() > 0 && (
                   <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse">
                     {getTotalItems()}
@@ -344,7 +344,7 @@ const MangaSushiSite = () => {
               </button>
               <button 
                 onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="lg:hidden text-white p-2"
+                className="lg:hidden text-gray-900 p-2"
               >
                 <Menu className="w-6 h-6" />
               </button>
@@ -354,7 +354,7 @@ const MangaSushiSite = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-gray-100 via-gray-50 to-white py-20 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] bg-repeat"></div> */}
         </div>
@@ -364,32 +364,32 @@ const MangaSushiSite = () => {
               <Gift className="w-4 h-4" />
               <span>Скидка 20% на первый заказ</span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
               Настоящие японские <span className="text-red-500">суши</span> с доставкой
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-gray-700 mb-8">
               Готовим из свежих продуктов и доставляем за 30 минут
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
-              <div className="flex items-center space-x-2 bg-gray-800/50 backdrop-blur px-4 py-3 rounded-lg">
+              <div className="flex items-center space-x-2 bg-white/80 backdrop-blur px-4 py-3 rounded-lg border border-gray-200">
                 <Truck className="w-5 h-5 text-red-500" />
                 <div>
-                  <p className="text-white font-semibold">Бесплатная доставка</p>
-                  <p className="text-gray-400 text-xs">от 10 000₸</p>
+                  <p className="text-gray-900 font-semibold">Бесплатная доставка</p>
+                  <p className="text-gray-600 text-xs">от 10 000₸</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2 bg-gray-800/50 backdrop-blur px-4 py-3 rounded-lg">
+              <div className="flex items-center space-x-2 bg-white/80 backdrop-blur px-4 py-3 rounded-lg border border-gray-200">
                 <Clock className="w-5 h-5 text-red-500" />
                 <div>
-                  <p className="text-white font-semibold">30 минут</p>
-                  <p className="text-gray-400 text-xs">среднее время доставки</p>
+                  <p className="text-gray-900 font-semibold">30 минут</p>
+                  <p className="text-gray-600 text-xs">среднее время доставки</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2 bg-gray-800/50 backdrop-blur px-4 py-3 rounded-lg">
+              <div className="flex items-center space-x-2 bg-white/80 backdrop-blur px-4 py-3 rounded-lg border border-gray-200">
                 <Star className="w-5 h-5 text-red-500" />
                 <div>
-                  <p className="text-white font-semibold">4.9 рейтинг</p>
-                  <p className="text-gray-400 text-xs">2000+ отзывов</p>
+                  <p className="text-gray-900 font-semibold">4.9 рейтинг</p>
+                  <p className="text-gray-600 text-xs">2000+ отзывов</p>
                 </div>
               </div>
             </div>
@@ -406,8 +406,8 @@ const MangaSushiSite = () => {
         <div className="flex gap-8">
           {/* Categories Sidebar */}
           <aside className="hidden lg:block w-64">
-            <div className="bg-gray-800 rounded-xl p-6 sticky top-24">
-              <h3 className="text-white font-semibold text-lg mb-4">Категории</h3>
+            <div className="bg-white border border-gray-200 rounded-xl p-6 sticky top-24">
+              <h3 className="text-gray-900 font-semibold text-lg mb-4">Категории</h3>
               <div className="space-y-2">
                 {categories.map(category => (
                   <button
@@ -416,7 +416,7 @@ const MangaSushiSite = () => {
                     className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${
                       selectedCategory === category.id
                         ? 'bg-red-600 text-white'
-                        : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     <span>{category.name}</span>
@@ -448,7 +448,7 @@ const MangaSushiSite = () => {
                   placeholder="Поиск блюд..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+                  className="w-full pl-12 pr-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-red-500 transition-colors"
                 />
               </div>
             </div>
@@ -462,7 +462,7 @@ const MangaSushiSite = () => {
                   className={`px-4 py-2 rounded-lg whitespace-nowrap transition-all ${
                     selectedCategory === category.id
                       ? 'bg-red-600 text-white'
-                      : 'bg-gray-800 text-gray-300'
+                      : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   {category.name}
@@ -473,8 +473,8 @@ const MangaSushiSite = () => {
             {/* Products */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredItems.map(item => (
-                <div key={item.id} className="bg-gray-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all">
-                  <div className="relative h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                <div key={item.id} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all">
+                  <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                     <span className="text-6xl">{item.image}</span>
                     {item.popular && (
                       <span className="absolute top-3 right-3 bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">
@@ -486,14 +486,14 @@ const MangaSushiSite = () => {
                     </button>
                   </div>
                   <div className="p-5">
-                    <h3 className="text-white font-semibold text-lg mb-2">{item.name}</h3>
+                    <h3 className="text-gray-900 font-semibold text-lg mb-2">{item.name}</h3>
                     <p className="text-gray-400 text-sm mb-3">{item.description}</p>
                     <div className="flex items-center justify-between text-gray-500 text-sm mb-4">
                       <span>{item.weight}</span>
                       {item.pieces && <span>{item.pieces} шт</span>}
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-white">₸{item.price.toLocaleString()}</span>
+                      <span className="text-2xl font-bold text-gray-900">₸{item.price.toLocaleString()}</span>
                       <button
                         onClick={() => addToCart(item)}
                         className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-lg font-medium transition-all transform hover:scale-105 flex items-center space-x-2"
@@ -619,7 +619,7 @@ const MangaSushiSite = () => {
       )}
 
       {/* Footer */}
-      <footer className="bg-black border-t border-gray-800 py-12 mt-20">
+      <footer className="bg-white border-t border-gray-200 py-12 mt-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
@@ -628,20 +628,20 @@ const MangaSushiSite = () => {
                   <span className="text-white text-xl font-bold">M</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-bold">MANGA SUSHI</h3>
-                  <p className="text-gray-400 text-xs">Доставка суши в Алматы</p>
+                  <h3 className="text-gray-900 font-bold">MANGA SUSHI</h3>
+                  <p className="text-gray-600 text-xs">Доставка суши в Алматы</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-gray-600 text-sm mb-4">
                 Настоящие японские суши с бесплатной доставкой по городу
               </p>
               <div className="flex space-x-3">
-                <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all">
+                <button className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white transition-all">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                   </svg>
                 </button>
-                <button className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all">
+                <button className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white transition-all">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
                   </svg>
@@ -650,8 +650,8 @@ const MangaSushiSite = () => {
             </div>
             
             <div>
-              <h4 className="text-white font-semibold mb-4">Меню</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="text-gray-900 font-semibold mb-4">Меню</h4>
+              <ul className="space-y-2 text-gray-600 text-sm">
                 <li><a href="#" className="hover:text-red-500 transition-colors">Роллы</a></li>
                 <li><a href="#" className="hover:text-red-500 transition-colors">Сеты</a></li>
                 <li><a href="#" className="hover:text-red-500 transition-colors">Горячие блюда</a></li>
@@ -661,8 +661,8 @@ const MangaSushiSite = () => {
             </div>
             
             <div>
-              <h4 className="text-white font-semibold mb-4">Информация</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="text-gray-900 font-semibold mb-4">Информация</h4>
+              <ul className="space-y-2 text-gray-600 text-sm">
                 <li><a href="#" className="hover:text-red-500 transition-colors">О компании</a></li>
                 <li><a href="#" className="hover:text-red-500 transition-colors">Доставка и оплата</a></li>
                 <li><a href="#" className="hover:text-red-500 transition-colors">Акции</a></li>
@@ -672,8 +672,8 @@ const MangaSushiSite = () => {
             </div>
             
             <div>
-              <h4 className="text-white font-semibold mb-4">Контакты</h4>
-              <ul className="space-y-3 text-gray-400 text-sm">
+              <h4 className="text-gray-900 font-semibold mb-4">Контакты</h4>
+              <ul className="space-y-3 text-gray-600 text-sm">
                 <li className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-red-500" />
                   <a href="tel:+77271234567" className="hover:text-red-500 transition-colors">+7 (727) 123-45-67</a>
@@ -688,10 +688,10 @@ const MangaSushiSite = () => {
                 </li>
               </ul>
               <div className="mt-4">
-                <p className="text-gray-400 text-sm mb-2">Принимаем к оплате:</p>
+                <p className="text-gray-600 text-sm mb-2">Принимаем к оплате:</p>
                 <div className="flex space-x-3">
-                  <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center text-xs text-gray-400">VISA</div>
-                  <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center text-xs text-gray-400">MC</div>
+                  <div className="w-12 h-8 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-600">VISA</div>
+                  <div className="w-12 h-8 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-600">MC</div>
                   <div className="w-12 h-8 bg-red-600 rounded flex items-center justify-center text-xs text-white font-bold">K</div>
                   <div className="w-12 h-8 bg-green-600 rounded flex items-center justify-center text-xs text-white font-bold">H</div>
                 </div>
