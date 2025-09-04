@@ -41,12 +41,12 @@ const MangaSushiV1 = () => {
   const [selectedCategory, setSelectedCategory] = useState("rolls");
   const [searchQuery, setSearchQuery] = useState("");
   const [showPayment, setShowPayment] = useState(false);
-  const [deliveryType, setDeliveryType] = useState('delivery'); // 'delivery' or 'pickup'
-  const [selectedTime, setSelectedTime] = useState('asap'); // 'asap' or specific time
-  const [promoCode, setPromoCode] = useState('');
+  const [deliveryType, setDeliveryType] = useState("delivery"); // 'delivery' or 'pickup'
+  const [selectedTime, setSelectedTime] = useState("asap"); // 'asap' or specific time
+  const [promoCode, setPromoCode] = useState("");
   const [promoApplied, setPromoApplied] = useState(false);
   const [useBonusPoints, setUseBonusPoints] = useState(false);
-  const [comments, setComments] = useState('');
+  const [comments, setComments] = useState("");
   const [showCommentsModal, setShowCommentsModal] = useState(false);
   const [showPromoModal, setShowPromoModal] = useState(false);
 
@@ -268,7 +268,7 @@ const MangaSushiV1 = () => {
         <div className="grid grid-cols-2 gap-3">
           <button className="bg-black text-white py-3 rounded-xl text-sm font-medium flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
             </svg>
             <span>Apple Pay</span>
           </button>
@@ -699,7 +699,9 @@ const MangaSushiV1 = () => {
                     <div className="flex-1 overflow-y-auto">
                       {/* Cart Items Section */}
                       <div className="p-4 sm:p-6 border-b">
-                        <h3 className="font-semibold text-base mb-3">Ваш заказ</h3>
+                        <h3 className="font-semibold text-base mb-3">
+                          Ваш заказ
+                        </h3>
                         <div className="space-y-3">
                           {cartItems.map((item) => (
                             <div
@@ -737,7 +739,7 @@ const MangaSushiV1 = () => {
                             </div>
                           ))}
                         </div>
-                        
+
                         {/* Order Summary */}
                         <div className="mt-4 space-y-2 text-sm">
                           <div className="flex justify-between">
@@ -747,12 +749,23 @@ const MangaSushiV1 = () => {
                           {promoApplied && (
                             <div className="flex justify-between text-green-600">
                               <span>Скидка по промокоду:</span>
-                              <span>-₸{Math.round(getTotalPrice() * 0.1).toLocaleString()}</span>
+                              <span>
+                                -₸
+                                {Math.round(
+                                  getTotalPrice() * 0.1
+                                ).toLocaleString()}
+                              </span>
                             </div>
                           )}
                           <div className="flex justify-between">
                             <span className="text-gray-600">Доставка:</span>
-                            <span className="text-green-600">{deliveryType === 'pickup' ? 'Самовывоз' : getTotalPrice() >= 10000 ? 'Бесплатно' : '₸1000'}</span>
+                            <span className="text-green-600">
+                              {deliveryType === "pickup"
+                                ? "Самовывоз"
+                                : getTotalPrice() >= 10000
+                                ? "Бесплатно"
+                                : "₸1000"}
+                            </span>
                           </div>
                           {useBonusPoints && (
                             <div className="flex justify-between text-yellow-600">
@@ -762,182 +775,275 @@ const MangaSushiV1 = () => {
                           )}
                           <div className="flex justify-between font-bold pt-2 border-t">
                             <span>Итого:</span>
-                            <span>₸{(() => {
-                              let total = getTotalPrice();
-                              if (promoApplied) total *= 0.9; // 10% discount
-                              if (deliveryType === 'delivery' && total < 10000) total += 1000; // delivery fee
-                              if (useBonusPoints) total = Math.max(0, total - 500); // bonus points
-                              return Math.round(total).toLocaleString();
-                            })()}</span>
+                            <span>
+                              ₸
+                              {(() => {
+                                let total = getTotalPrice();
+                                if (promoApplied) total *= 0.9; // 10% discount
+                                if (
+                                  deliveryType === "delivery" &&
+                                  total < 10000
+                                )
+                                  total += 1000; // delivery fee
+                                if (useBonusPoints)
+                                  total = Math.max(0, total - 500); // bonus points
+                                return Math.round(total).toLocaleString();
+                              })()}
+                            </span>
                           </div>
                         </div>
                       </div>
 
                       {/* Delivery Options */}
                       <div className="p-4 sm:p-6 border-b">
-                      <h3 className="font-semibold text-base mb-3">Способ получения</h3>
-                      <div className="flex space-x-2">
-                        <button
-                          onClick={() => setDeliveryType('delivery')}
-                          className={`flex-1 flex items-center justify-center space-x-2 p-3 rounded-lg border-2 transition-all ${
-                            deliveryType === 'delivery'
-                              ? 'border-red-500 bg-red-50 text-red-600'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
-                        >
-                          <Truck className="w-4 h-4" />
-                          <span className="font-medium text-sm">Доставка</span>
-                        </button>
-                        
-                        <button
-                          onClick={() => setDeliveryType('pickup')}
-                          className={`flex-1 flex items-center justify-center space-x-2 p-3 rounded-lg border-2 transition-all ${
-                            deliveryType === 'pickup'
-                              ? 'border-red-500 bg-red-50 text-red-600'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
-                        >
-                          <MapPin className="w-4 h-4" />
-                          <span className="font-medium text-sm">Самовывоз</span>
-                        </button>
-                      </div>
-                    </div>
+                        <h3 className="font-semibold text-base mb-3">
+                          Способ получения
+                        </h3>
+                        <div className="flex space-x-2">
+                          <button
+                            onClick={() => setDeliveryType("delivery")}
+                            className={`flex-1 flex items-center justify-center space-x-2 p-3 rounded-lg border-2 transition-all ${
+                              deliveryType === "delivery"
+                                ? "border-red-500 bg-red-50 text-red-600"
+                                : "border-gray-200 hover:border-gray-300"
+                            }`}
+                          >
+                            <Truck className="w-4 h-4" />
+                            <span className="font-medium text-sm">
+                              Доставка
+                            </span>
+                          </button>
 
-                    {/* Delivery Time */}
-                    <div className="p-4 sm:p-6 border-b">
-                      <h3 className="font-semibold text-base mb-3 flex items-center">
-                        <Clock className="w-5 h-5 text-red-500 mr-2" />
-                        Время доставки
-                      </h3>
-                      <div className="relative">
-                        <select
-                          value={selectedTime}
-                          onChange={(e) => setSelectedTime(e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-red-500 appearance-none bg-white"
-                        >
-                          <option value="asap">Как можно скорее (30-45 мин)</option>
-                          <option value="18:00">Запланировать на 18:00</option>
-                          <option value="18:30">Запланировать на 18:30</option>
-                          <option value="19:00">Запланировать на 19:00</option>
-                          <option value="19:30">Запланировать на 19:30</option>
-                          <option value="20:00">Запланировать на 20:00</option>
-                          <option value="20:30">Запланировать на 20:30</option>
-                          <option value="21:00">Запланировать на 21:00</option>
-                        </select>
-                        <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                          <button
+                            onClick={() => setDeliveryType("pickup")}
+                            className={`flex-1 flex items-center justify-center space-x-2 p-3 rounded-lg border-2 transition-all ${
+                              deliveryType === "pickup"
+                                ? "border-red-500 bg-red-50 text-red-600"
+                                : "border-gray-200 hover:border-gray-300"
+                            }`}
+                          >
+                            <MapPin className="w-4 h-4" />
+                            <span className="font-medium text-sm">
+                              Самовывоз
+                            </span>
+                          </button>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Upsale Section */}
-                    <div className="p-4 sm:p-6 border-b">
-                      <h3 className="font-semibold text-base mb-3 flex items-center">
-                        <Gift className="w-5 h-5 text-red-500 mr-2" />
-                        Рекомендуем добавить
-                      </h3>
-                      <div className="overflow-x-auto pb-2">
-                        <div className="flex space-x-3 min-w-max">
-                          {[
-                            { id: 13, name: 'Аляска ролл', price: 2800, image: '🍣', category: 'rolls', description: 'Краб, огурец, лосось сверху', weight: '220г', pieces: 8 },
-                            { id: 14, name: 'Канада ролл', price: 3200, image: '🍣', category: 'rolls', description: 'Лосось, авокадо, икра', weight: '240г', pieces: 8 },
-                            { id: 15, name: 'Эби ролл', price: 2600, image: '🍣', category: 'rolls', description: 'Креветка, огурец, спайси соус', weight: '200г', pieces: 8 },
-                            { id: 16, name: 'Унаги ролл', price: 4100, image: '🍣', category: 'rolls', description: 'Угорь, огурец, унаги соус', weight: '260г', pieces: 8 }
-                          ].map(sushi => (
-                            <div key={sushi.id} className="flex-shrink-0 w-32 bg-white border border-gray-200 rounded-lg overflow-hidden">
-                              <div className="h-24 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <span className="text-3xl">{sushi.image}</span>
-                              </div>
-                              <div className="p-2">
-                                <h4 className="font-medium text-xs mb-1 line-clamp-1">{sushi.name}</h4>
-                                <p className="text-xs text-gray-500 mb-2 line-clamp-2">{sushi.description}</p>
-                                <div className="flex items-center justify-between">
-                                  <span className="text-sm font-bold text-gray-900">₸{sushi.price.toLocaleString()}</span>
-                                  <button
-                                    onClick={() => addToCart(sushi as MenuItem)}
-                                    className="bg-red-600 text-white p-1.5 rounded-md text-xs hover:bg-red-700 transition-colors"
-                                  >
-                                    <Plus className="w-3 h-3" />
-                                  </button>
+                      {/* Delivery Time */}
+                      <div className="p-4 sm:p-6 border-b">
+                        <h3 className="font-semibold text-base mb-3 flex items-center">
+                          <Clock className="w-5 h-5 text-red-500 mr-2" />
+                          Время доставки
+                        </h3>
+                        <div className="relative">
+                          <select
+                            value={selectedTime}
+                            onChange={(e) => setSelectedTime(e.target.value)}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-red-500 appearance-none bg-white"
+                          >
+                            <option value="asap">
+                              Как можно скорее (30-45 мин)
+                            </option>
+                            <option value="18:00">
+                              Запланировать на 18:00
+                            </option>
+                            <option value="18:30">
+                              Запланировать на 18:30
+                            </option>
+                            <option value="19:00">
+                              Запланировать на 19:00
+                            </option>
+                            <option value="19:30">
+                              Запланировать на 19:30
+                            </option>
+                            <option value="20:00">
+                              Запланировать на 20:00
+                            </option>
+                            <option value="20:30">
+                              Запланировать на 20:30
+                            </option>
+                            <option value="21:00">
+                              Запланировать на 21:00
+                            </option>
+                          </select>
+                          <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                        </div>
+                      </div>
+
+                      {/* Upsale Section */}
+                      <div className="p-4 sm:p-6 border-b">
+                        <h3 className="font-semibold text-base mb-3 flex items-center">
+                          <Gift className="w-5 h-5 text-red-500 mr-2" />
+                          Рекомендуем добавить
+                        </h3>
+                        <div className="overflow-x-auto pb-2">
+                          <div className="flex space-x-3 min-w-max">
+                            {[
+                              {
+                                id: 13,
+                                name: "Аляска ролл",
+                                price: 2800,
+                                image: "🍣",
+                                category: "rolls",
+                                description: "Краб, огурец, лосось сверху",
+                                weight: "220г",
+                                pieces: 8,
+                              },
+                              {
+                                id: 14,
+                                name: "Канада ролл",
+                                price: 3200,
+                                image: "🍣",
+                                category: "rolls",
+                                description: "Лосось, авокадо, икра",
+                                weight: "240г",
+                                pieces: 8,
+                              },
+                              {
+                                id: 15,
+                                name: "Эби ролл",
+                                price: 2600,
+                                image: "🍣",
+                                category: "rolls",
+                                description: "Креветка, огурец, спайси соус",
+                                weight: "200г",
+                                pieces: 8,
+                              },
+                              {
+                                id: 16,
+                                name: "Унаги ролл",
+                                price: 4100,
+                                image: "🍣",
+                                category: "rolls",
+                                description: "Угорь, огурец, унаги соус",
+                                weight: "260г",
+                                pieces: 8,
+                              },
+                            ].map((sushi) => (
+                              <div
+                                key={sushi.id}
+                                className="flex-shrink-0 w-32 bg-white border border-gray-200 rounded-lg overflow-hidden"
+                              >
+                                <div className="h-24 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                                  <span className="text-3xl">
+                                    {sushi.image}
+                                  </span>
+                                </div>
+                                <div className="p-2">
+                                  <h4 className="font-medium text-xs mb-1 line-clamp-1">
+                                    {sushi.name}
+                                  </h4>
+                                  <p className="text-xs text-gray-500 mb-2 line-clamp-2">
+                                    {sushi.description}
+                                  </p>
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-sm font-bold text-gray-900">
+                                      ₸{sushi.price.toLocaleString()}
+                                    </span>
+                                    <button
+                                      onClick={() =>
+                                        addToCart(sushi as MenuItem)
+                                      }
+                                      className="bg-red-600 text-white p-1.5 rounded-md text-xs hover:bg-red-700 transition-colors"
+                                    >
+                                      <Plus className="w-3 h-3" />
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Promo Code */}
-                    <div className="p-4 sm:p-6 border-b">
-                      <button
-                        onClick={() => setShowPromoModal(true)}
-                        className="w-full flex items-center justify-between p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all"
-                      >
-                        <div className="flex items-center space-x-3">
-                          <Percent className="w-5 h-5 text-red-500" />
-                          <div className="text-left">
-                            <div className="font-medium text-sm">
-                              {promoApplied ? 'Промокод применен!' : 'У меня есть промокод'}
+                      {/* Promo Code */}
+                      <div className="p-4 sm:p-6 border-b">
+                        <button
+                          onClick={() => setShowPromoModal(true)}
+                          className="w-full flex items-center justify-between p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <Percent className="w-5 h-5 text-red-500" />
+                            <div className="text-left">
+                              <div className="font-medium text-sm">
+                                {promoApplied
+                                  ? "Промокод применен!"
+                                  : "У меня есть промокод"}
+                              </div>
+                              {promoApplied && (
+                                <div className="text-xs text-green-600">
+                                  Скидка 10%
+                                </div>
+                              )}
                             </div>
-                            {promoApplied && (
-                              <div className="text-xs text-green-600">Скидка 10%</div>
-                            )}
                           </div>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-gray-400" />
-                      </button>
-                    </div>
-
-                    {/* Bonus Points */}
-                    <div className="p-4 sm:p-6 border-b">
-                      <h3 className="font-semibold text-base mb-3 flex items-center">
-                        <Star className="w-5 h-5 text-yellow-500 mr-2" />
-                        Бонусные баллы
-                      </h3>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
-                          <div>
-                            <div className="font-medium text-sm">Доступно: 500 баллов</div>
-                            <div className="text-xs text-gray-500">1 балл = 1₸</div>
-                          </div>
-                          <label className="flex items-center space-x-2">
-                            <input
-                              type="checkbox"
-                              checked={useBonusPoints}
-                              onChange={(e) => setUseBonusPoints(e.target.checked)}
-                              className="w-4 h-4 text-red-600 rounded focus:ring-red-500"
-                            />
-                            <span className="text-sm">Использовать</span>
-                          </label>
-                        </div>
-                        {useBonusPoints && (
-                          <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
-                            К оплате будет списано 500₸ с бонусного счета
-                          </div>
-                        )}
+                          <ArrowRight className="w-4 h-4 text-gray-400" />
+                        </button>
                       </div>
-                    </div>
 
-                    {/* Comments */}
-                    <div className="p-4 sm:p-6 border-b">
-                      <button
-                        onClick={() => setShowCommentsModal(true)}
-                        className="w-full flex items-center justify-between p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all"
-                      >
-                        <div className="flex items-center space-x-3">
-                          <div className="w-5 h-5 text-red-500 flex items-center justify-center">
-                            💬
-                          </div>
-                          <div className="text-left">
-                            <div className="font-medium text-sm">
-                              {comments ? 'Комментарий добавлен' : 'Добавить комментарий'}
+                      {/* Bonus Points */}
+                      <div className="p-4 sm:p-6 border-b">
+                        <h3 className="font-semibold text-base mb-3 flex items-center">
+                          <Star className="w-5 h-5 text-yellow-500 mr-2" />
+                          Бонусные баллы
+                        </h3>
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                            <div>
+                              <div className="font-medium text-sm">
+                                Доступно: 500 баллов
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                1 балл = 1₸
+                              </div>
                             </div>
-                            {comments && (
-                              <div className="text-xs text-gray-500 truncate max-w-48">{comments}</div>
-                            )}
+                            <label className="flex items-center space-x-2">
+                              <input
+                                type="checkbox"
+                                checked={useBonusPoints}
+                                onChange={(e) =>
+                                  setUseBonusPoints(e.target.checked)
+                                }
+                                className="w-4 h-4 text-red-600 rounded focus:ring-red-500"
+                              />
+                              <span className="text-sm">Использовать</span>
+                            </label>
                           </div>
+                          {useBonusPoints && (
+                            <div className="text-xs text-gray-600 p-2 bg-gray-50 rounded">
+                              К оплате будет списано 500₸ с бонусного счета
+                            </div>
+                          )}
                         </div>
-                        <ArrowRight className="w-4 h-4 text-gray-400" />
-                      </button>
-                    </div>
+                      </div>
+
+                      {/* Comments */}
+                      <div className="p-4 sm:p-6 border-b">
+                        <button
+                          onClick={() => setShowCommentsModal(true)}
+                          className="w-full flex items-center justify-between p-3 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <div className="w-5 h-5 text-red-500 flex items-center justify-center">
+                              💬
+                            </div>
+                            <div className="text-left">
+                              <div className="font-medium text-sm">
+                                {comments
+                                  ? "Комментарий добавлен"
+                                  : "Добавить комментарий"}
+                              </div>
+                              {comments && (
+                                <div className="text-xs text-gray-500 truncate max-w-48">
+                                  {comments}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-gray-400" />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Sticky Payment Button */}
@@ -946,10 +1052,12 @@ const MangaSushiV1 = () => {
                         onClick={() => setShowPayment(true)}
                         className="w-full bg-red-600 text-white py-3 rounded-xl font-medium hover:bg-red-700 transition-colors min-h-[48px]"
                       >
-                        Оформить заказ ₸{(() => {
+                        Оформить заказ ₸
+                        {(() => {
                           let total = getTotalPrice();
                           if (promoApplied) total *= 0.9; // 10% discount
-                          if (deliveryType === 'delivery' && total < 10000) total += 1000; // delivery fee
+                          if (deliveryType === "delivery" && total < 10000)
+                            total += 1000; // delivery fee
                           if (useBonusPoints) total = Math.max(0, total - 500); // bonus points
                           return Math.round(total).toLocaleString();
                         })()}
@@ -995,10 +1103,15 @@ const MangaSushiV1 = () => {
       {/* Comments Modal */}
       {showCommentsModal && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          <div className="absolute inset-0 bg-black bg-opacity-60" onClick={() => setShowCommentsModal(false)} />
+          <div
+            className="absolute inset-0 bg-black bg-opacity-60"
+            onClick={() => setShowCommentsModal(false)}
+          />
           <div className="absolute inset-x-4 top-1/2 transform -translate-y-1/2 bg-white rounded-xl shadow-xl max-w-sm mx-auto">
             <div className="p-6">
-              <h3 className="text-lg font-semibold mb-4">Комментарий к заказу</h3>
+              <h3 className="text-lg font-semibold mb-4">
+                Комментарий к заказу
+              </h3>
               <textarea
                 value={comments}
                 onChange={(e) => setComments(e.target.value)}
@@ -1028,7 +1141,10 @@ const MangaSushiV1 = () => {
       {/* Promo Code Modal */}
       {showPromoModal && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          <div className="absolute inset-0 bg-black bg-opacity-60" onClick={() => setShowPromoModal(false)} />
+          <div
+            className="absolute inset-0 bg-black bg-opacity-60"
+            onClick={() => setShowPromoModal(false)}
+          />
           <div className="absolute inset-x-4 top-1/2 transform -translate-y-1/2 bg-white rounded-xl shadow-xl max-w-sm mx-auto">
             <div className="p-6">
               <h3 className="text-lg font-semibold mb-4">Введите промокод</h3>
@@ -1043,12 +1159,16 @@ const MangaSushiV1 = () => {
                 {promoApplied && (
                   <div className="flex items-center space-x-2 p-3 bg-green-50 rounded-lg">
                     <Check className="w-4 h-4 text-green-500" />
-                    <span className="text-green-700 text-sm font-medium">Промокод применен! Скидка 10%</span>
+                    <span className="text-green-700 text-sm font-medium">
+                      Промокод применен! Скидка 10%
+                    </span>
                   </div>
                 )}
                 <div className="bg-gray-50 p-3 rounded-lg">
                   <p className="text-xs text-gray-600">Доступные промокоды:</p>
-                  <p className="text-xs text-gray-800 font-mono mt-1">SAVE10 - скидка 10%</p>
+                  <p className="text-xs text-gray-800 font-mono mt-1">
+                    SAVE10 - скидка 10%
+                  </p>
                 </div>
               </div>
               <div className="flex space-x-3 mt-6">
@@ -1060,7 +1180,7 @@ const MangaSushiV1 = () => {
                 </button>
                 <button
                   onClick={() => {
-                    if (promoCode.toUpperCase() === 'SAVE10') {
+                    if (promoCode.toUpperCase() === "SAVE10") {
                       setPromoApplied(true);
                       setShowPromoModal(false);
                     }
