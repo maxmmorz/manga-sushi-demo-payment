@@ -7,10 +7,6 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import { ShoppingCart, Menu as MenuIcon } from "lucide-react";
-import Home from "./components/Home";
-import Menu from "./components/Menu";
-import About from "./components/About";
-import Contact from "./components/Contact";
 import MangaSushiV1 from "./components/MangaSushiV1";
 import MangaSushiV2 from "./components/MangaSushiV2";
 

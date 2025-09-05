@@ -216,9 +216,6 @@ const Home = () => {
     return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   };
 
-  const getTotalItems = () => {
-    return cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  };
 
   // Payment Form Component
   const PaymentForm = () => {
